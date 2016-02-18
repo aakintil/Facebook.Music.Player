@@ -8,37 +8,60 @@
 // dimension variables
 $desktop_w: 70%; // TODO: don't forget to add media query to change this
 
-// CHANGING NAVBAR HEIGHT
+// NAVBAR
+// changing the height
 .navbar {
     height: 100px; 
     padding: 25px; 
     background-color: white; 
 
+    // CONTAINER
     // changing the container width so it's static
+    // center input node
     .container { 
+        text-align: center; 
 
-        // removing left margin
-        .navbar-brand {
-            margin-left: 0; 
+        // full width child node
+        // relative position so title can be absolute positioned
+        .navbar-header {
+            width: 100%; 
+            position: relative; 
+
+            // removing left margin
+            // absolute position title so input can be centered
+            .navbar-brand {
+                margin-left: 0; 
+                float: none; 
+                padding: 0; 
+                top: 15px; 
+                position: absolute; 
+                left: 30%; 
+            }
+
+            // INPUT / SEARCH FIELD
+            .form-search {
+
+                // changing the search border radius
+                .search-query {
+                    border-radius: 0;
+                }
+
+                // positioning the magnifying glass
+                .search-icon {
+                    left: auto; 
+                    padding-left: 10px; 
+                }
+            }  
         }
-        //        
-        //        // aligning the input to the middle of the screen
-        //        .navbar-form {
-        //            text-align: center; 
-        //            
-        //            // changing the form border radius
-        //            .form-search .search-query {
-        //                border-radius: 0; 
-        //                
-        //                // positioning the magnifying glass 
-        //                .search-only .search-icon {
-        //                    left: 33%; 
-        //                    
-        //                    input {
-        //              
-        //                    }
-        //                }
-        //            }   
-        //        }
+    }
+}
+
+// PAGE FOOTER
+.site-footer {
+    text-align: center;
+    
+    h5 {
+        font-weight: 100; 
+        letter-spacing: 1px; 
     }
 }

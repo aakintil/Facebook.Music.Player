@@ -2407,5 +2407,26 @@ a.list-group-item {
   height: 100px;
   padding: 25px;
   background-color: white; }
-  .navbar .container .navbar-brand {
-    margin-left: 0; }
+  .navbar .container {
+    text-align: center; }
+    .navbar .container .navbar-header {
+      width: 100%;
+      position: relative; }
+      .navbar .container .navbar-header .navbar-brand {
+        margin-left: 0;
+        float: none;
+        padding: 0;
+        top: 15px;
+        position: absolute;
+        left: 30%; }
+      .navbar .container .navbar-header .form-search .search-query {
+        border-radius: 0; }
+      .navbar .container .navbar-header .form-search .search-icon {
+        left: auto;
+        padding-left: 10px; }
+
+.site-footer {
+  text-align: center; }
+  .site-footer h5 {
+    font-weight: 100;
+    letter-spacing: 1px; }

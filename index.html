@@ -15,60 +15,55 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
-
     </head>
 
     <body>
-
-
+        <!-- main header -->
         <div class="docs-header">
+
             <!--nav-->
             <nav class="navbar navbar-default navbar-custom" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
+                        <!-- collapsing navigation after desktop to mobile breakpoint -->
+                        <div class="collapse navbar-collapse">
+                            <a class="navbar-brand" href="index.html">SMI</a>
+                            <form class="navbar-form" role="search">
+                                <div class="form-search search-only">
+                                    <i class="search-icon glyphicon glyphicon-search"></i>
+                                    <input class="form-control search-query" type="text">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- navigation toggle mobile button -->
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">SMI</a>
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <form class="navbar-form" role="search">
-                            <div class="form-search search-only">
-                                <i class="search-icon glyphicon glyphicon-search"></i>
-                                <input class="form-control search-query" type="text">
-                            </div>
-                        </form>
-<!--
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">ABOUT US</a></li>
-                             <li class="disabled"><a href="#">Link</a></li> 
-                        </ul>
--->
                     </div>
                 </div>
             </nav>
         </div>
 
-        <!--
-<div class="col-md-4">
-<h1> SMI </h1>          
-</div>
 
-<div class="col-md-4">
-<input id="search" type="search">      
-</div>
-
-<div class="col-md-4">
-<p id="username"> dark_muo </p>     
-</div>
+        <div class="site-footer">
+            <div class="container">
+                <div id="info">
+                    <span class="download__infos">SMI is an acronym for 'Save Mah Inbox,' a music group some close friends and I decided to make after spamming the shit out of each other's inboxes...with dope music. Enjoy.</span>
+                    <!--
+<a class="btn" href="documentation.html">Read the Documentation</a>
+<a class="btn btn-primary" href="https://github.com/bootflat/bootflat.github.io/archive/master.zip">Download Bootflat</a>
+<a href="http://www.smartaddon.com/?share" title="Share Button" onclick="return sa_tellafriend('','bookmarks')"><img alt="Share" src="http://bootflat.github.io/img/share.gif" border="0"></a>
 -->
-        <footer>
-            <h5> ADERINSOLA AKINTILO </h5>
-        </footer>
+                </div>
+                <h5> ADERINSOLA AKINTILO </h5>
+            </div>
+        </div>       
 
+        <!-- Boostrap + jQuery calls -->
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
