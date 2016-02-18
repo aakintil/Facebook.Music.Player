@@ -1,0 +1,23 @@
+{
+  "name": "smi_music_hub",
+  "version": "1.0.0",
+  "description": "a local repository for all the sick music we've found",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aakintil/Facebook.Music.Player.git"
+  },
+  "author": "Aderinsola Akintilo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aakintil/Facebook.Music.Player/issues"
+  },
+  "homepage": "https://github.com/aakintil/Facebook.Music.Player#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
+  }
+}
