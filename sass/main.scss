@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+@import 
+
+    // Complete bootflat assets
+    "bootflat"; 
+
+// dimension variables
+$desktop_w: 70%; // TODO: don't forget to add media query to change this
+
+// CHANGING NAVBAR HEIGHT
+.navbar {
+    height: 100px; 
+    padding: 25px; 
+    background-color: white; 
+
+    // changing the container width so it's static
+    .container { 
+
+        // removing left margin
+        .navbar-brand {
+            margin-left: 0; 
+        }
+        //        
+        //        // aligning the input to the middle of the screen
+        //        .navbar-form {
+        //            text-align: center; 
+        //            
+        //            // changing the form border radius
+        //            .form-search .search-query {
+        //                border-radius: 0; 
+        //                
+        //                // positioning the magnifying glass 
+        //                .search-only .search-icon {
+        //                    left: 33%; 
+        //                    
+        //                    input {
+        //              
+        //                    }
+        //                }
+        //            }   
+        //        }
+    }
+}
