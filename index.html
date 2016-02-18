@@ -4,14 +4,18 @@
     <head>
         <meta charset="UTF-8">
         <title> Save My Inbox Player</title>
+        <!-- Gotta get jQuery First -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
+        <!-- Personal js files and data -->
         <script src="js/superior.music.group.js"></script>
         <script src="js/funktion.js"></script>
         <script src="js/save.mah.inbox.js"></script>
-        <!--        <script src="js/app.js"></script>-->
-        <script src="js/libs/moment.min.js"></script>
+        <script src="js/app.js"></script>
+
+
+        <!-- Calling all necessary styling -->
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -19,7 +23,7 @@
 
     <body>
         <!-- main header -->
-        <div class="docs-header">
+        <div id="header" class="docs-header">
 
             <!--nav-->
             <nav class="navbar navbar-default navbar-custom" role="navigation">
@@ -48,8 +52,12 @@
             </nav>
         </div>
 
+        <div id="archive">
+            <div class="container">
+            </div>
+        </div>
 
-        <div class="site-footer">
+        <div id="footer" class="site-footer">
             <div class="container">
                 <div id="info">
                     <span class="download__infos">SMI is an acronym for 'Save Mah Inbox,' a music group some close friends and I decided to make after spamming the shit out of each other's inboxes...with dope music. Enjoy.</span>
@@ -62,6 +70,10 @@
                 <h5> ADERINSOLA AKINTILO </h5>
             </div>
         </div>       
+
+        <!-- External pre loaded libs -->
+        <script src="js/libs/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
         <!-- Boostrap + jQuery calls -->
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
