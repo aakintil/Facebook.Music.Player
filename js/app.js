@@ -47,6 +47,7 @@ $( document ).ready( function() {
             vevo: {}, 
             spotify: {} 
         }, 
+        users = {}, 
         count, 
         youtube_data = ""; 
 
@@ -57,7 +58,17 @@ $( document ).ready( function() {
     //        vevo = 'vevo', 
     //        spotify = 'spotify'; 
 
-    for ( var i = 0; i < 20; i++ ) {
+    // NOW WE HAVE EACH USER THAT'S POSTED ALONG WITH # OF POSTS
+    _VA = []
+    _NAMES = []; 
+    for ( var i in data ) {
+        _NAMES.push( data[ i ].from ); 
+    }
+    _VA = _.countBy( _NAMES, "name" )
+
+    console.log( "name count: \n", _VA );
+
+    for ( var i in data ) {
         if ( data[ i ].link !== undefined || data[ i ].source !== undefined ) {
             //            var message = ( data[ i ].message === undefined ) ? 'There are no messages for this post' : ( data[ i ].message ), 
             //                link = ( data[ i ].link === undefined ) ? 'There are no links for this post': data[ i ].link, 
@@ -68,7 +79,6 @@ $( document ).ready( function() {
                 post_name = ""; 
 
             var l = data[ i ].link; 
-
             if ( l.indexOf( 'youtube' ) !== -1 || l.indexOf( 'youtu.be' ) !== -1 ) {
                 music.youtube++; 
                 musicData.youtube[ c ] = data[ i ]; 
