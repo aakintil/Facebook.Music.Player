@@ -56,10 +56,36 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
     }
 }
 
+// ARCHIVE 
+#archive {
+    .container {
+
+        // individual music info containers
+        // adjusting row margin so i can center block
+        .row {
+            
+            margin: 50px -15px; 
+            
+            .block {
+                text-align: center; 
+                border: 1px solid #ddd; 
+                position: relative; 
+                overflow: hidden;
+                padding: 0;
+                padding-top: 50px; 
+
+                .picture {
+                    width: 100%; 
+                }
+            }   
+        }
+    }
+}
+
 // PAGE FOOTER
 .site-footer {
     text-align: center;
-    
+
     h5 {
         font-weight: 100; 
         letter-spacing: 1px; 

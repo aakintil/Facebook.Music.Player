@@ -2425,6 +2425,18 @@ a.list-group-item {
         left: auto;
         padding-left: 10px; }
 
+#archive .container .row {
+  margin: 50px -15px; }
+  #archive .container .row .block {
+    text-align: center;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    padding-top: 50px; }
+    #archive .container .row .block .picture {
+      width: 100%; }
+
 .site-footer {
   text-align: center; }
   .site-footer h5 {
