@@ -4,6 +4,10 @@ function debug( type ) {
     ( type === "ya" ) ? console.log( s ) : console.log( e ); 
 }
 
+function do_nothing() {
+    return; 
+}
+
 function get_url( text ) {
     // regex to get url and only urls
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -73,6 +77,7 @@ $( document ).ready( function() {
             //            var message = ( data[ i ].message === undefined ) ? 'There are no messages for this post' : ( data[ i ].message ), 
             //                link = ( data[ i ].link === undefined ) ? 'There are no links for this post': data[ i ].link, 
             //                title = data[ i ].title; 
+            console.log( data[ i ].name, "   || ", data[ i ].link ); 
             var message = "", 
                 link = "", 
                 source = "", 
@@ -106,7 +111,12 @@ $( document ).ready( function() {
                 music.spotify++;
                 musicData.spotify[ c ] = data[ i ]; 
             }
-
+            
+            
+            message = ( data[ i ].message === undefined ) ? 'There are no messages for this post' : ( data[ i ].message );
+            link = ( data[ i ].link === undefined ) ? 'null' : data[ i ].link; 
+            post_name = data[ i ].name; 
+            source = data[ i ].source; 
 
 
             var img = ( data[ i ].full_picture === undefined ) ? 'img/no.pic.png' : data[ i ].full_picture, 
@@ -119,23 +129,33 @@ $( document ).ready( function() {
                 }
 
             // moment().format('MMMM Do YYYY, h:mm:ss a'); // May 10th 2015, 3:15:09 pm
-            var block = $( '<div class="row">'
-                          + '<div class="block col-md-offset-3 col-md-6">' 
-                          + '<p class="message">' + message + '</p>'
-                          + link_display( link ) 
-                          + '<p class="source">' + source + '</p>'
-                          + '<p class="title">' + post_name + '</p>'
-                          + '<p class="user">' + user + '</p>'
-                          + '<p class="date"> Posted: ' + date + '</p>'
-                          + '<img class="picture" src="' + img + '"/>'
-                          + '</div>' 
-                          + '</div>' );
-            container.append( block ); 
+            var block_row = $( '<div class="row">'
+                              + '<div class="block col-md-offset-3 col-md-6">' 
+                              + '</div>' 
+                              + '</div>' );
+
+            //+ '<p class="message">' + message + '</p>'
+            //    + link_display( link ) 
+            //    + '<p class="source">' + source + '</p>'
+            //    + '<p class="title">' + post_name + '</p>'
+            //    + '<p class="user">' + user + '</p>'
+            //    + '<p class="date"> Posted: ' + date + '</p>'
+            //    + '<img class="picture" src="' + img + '"/>'
+
+            // checking to see if any of the provided fields are null
+            ( post_name.length > 1 ) ? block_row.find( '.block').append( '<p class="title">' + post_name + '</p>' ): do_nothing() ; 
+            ( user.length > 1 ) ? block_row.find( '.block').append( '<p class="user">' + user + '</p>' ): do_nothing() ; 
+            ( date.length > 1 ) ? block_row.find( '.block').append( '<p class="date"> Posted: ' + date + '</p>' ): do_nothing() ; 
+            ( message.length > 1 ) ? block_row.find( '.block').append( '<p class="message">' + message + '</p>' ): do_nothing() ; 
+            ( link.length > 1 ) ? block_row.find( '.block').append( link_display( link ) ): do_nothing() ; 
+            ( source !== undefined ) ? block_row.find( '.block').append( '<p class="source">' + source + '</p>' ): do_nothing() ; 
+            ( img.length > 1 ) ? block_row.find( '.block').append( '<img class="picture" src="' + img + '"/>' ): do_nothing() ; 
+            container.append( block_row ); 
             c++; 
         }
     }
 
-    // console.log( musicData.youtube[ 1 ] ); 
+
     ( _.size( musicData.youtube ) > 0 ) ? debug( "ya") : debug( "fuck" );
 
     // checkout this for npm
