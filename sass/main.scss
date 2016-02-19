@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+@import 
+
+    // Complete bootflat assets
+    "bootflat"; 
+
+// dimension variables
+$desktop_w: 70%; // TODO: don't forget to add media query to change this
+
+// NAVBAR
+// changing the height
+.navbar {
+    height: 100px; 
+    padding: 25px; 
+    background-color: white; 
+
+    // CONTAINER
+    // changing the container width so it's static
+    // center input node
+    .container { 
+        text-align: center; 
+
+        // full width child node
+        // relative position so title can be absolute positioned
+        .navbar-header {
+            width: 100%; 
+            position: relative; 
+
+            // removing left margin
+            // absolute position title so input can be centered
+            .navbar-brand {
+                margin-left: 0; 
+                float: none; 
+                padding: 0; 
+                top: 15px; 
+                position: absolute; 
+                left: 30%; 
+            }
+
+            // INPUT / SEARCH FIELD
+            .form-search {
+
+                // changing the search border radius
+                .search-query {
+                    border-radius: 0;
+                }
+
+                // positioning the magnifying glass
+                .search-icon {
+                    left: auto; 
+                    padding-left: 10px; 
+                }
+            }  
+        }
+    }
+}
+
+// ARCHIVE 
+#archive {
+    .container {
+
+        // individual music info containers
+        // adjusting row margin so i can center block
+        .row {
+            
+            margin: 50px -15px; 
+            
+            .block {
+                text-align: center; 
+                border: 1px solid #ddd; 
+                position: relative; 
+                overflow: hidden;
+                padding: 0;
+                padding-top: 50px; 
+
+                .picture {
+                    width: 100%; 
+                }
+            }   
+        }
+    }
+}
+
+// PAGE FOOTER
+.site-footer {
+    text-align: center;
+
+    h5 {
+        font-weight: 100; 
+        letter-spacing: 1px; 
+    }
+}
