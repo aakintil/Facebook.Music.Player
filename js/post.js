@@ -125,6 +125,7 @@ function Post( data ) {
     this.author = data.from.name; 
     this.img = data.full_picture || ""; 
     this.posted = data.created_time; 
+    this.likes = 0 || data.likes.data.length; 
 
     function findPlatform( data ) {
         // if no links are available, we can't get the platform 
@@ -180,17 +181,17 @@ Post.prototype.getPlatform = function() { return this.platform; }
 /////////////////////
 // POSTS CLASS
 /////////////////////
-function Posts( list ) {
+function Posts() {
     console.log( "initializing posts" ); 
     // etch cases
     // list has to be an array OR a json object
-    if ( list.constructor !== Array || typeof list !== 'object' ) {
-        console.log( "input an array of json data, or one json object please..." ); 
-        return; 
-    }
+    //    if ( list.constructor !== Array || typeof list !== 'object' ) {
+    //        console.log( "input an array of json data, or one json object please..." ); 
+    //        return; 
+    //    }
 
     console.log( "creating the post list" ); 
-    this.list = list; 
+    this.list = []; 
 
     // checking the count
     this.size = this.list.length;
@@ -211,7 +212,7 @@ Posts.prototype.calculateAuthorCount = function() {
 }
 
 Posts.prototype.addPost = function( post ) {
-    console.log( "adding post... " );
+    this.list.push( post ); 
 }
 
 Posts.prototype.removePost = function( post ) {
@@ -227,34 +228,28 @@ Posts.prototype.getAuthors = function() {
     console.log( "getting authors... " );
 }
 
+Posts.prototype.setList = function( new_list ) {
+    this.list = new_list; 
+}
 
-//
-//_AUTHORS = []; 
+
 function init() {
-
-    _ALL_POSTS = []; 
-
-    // grabbed all author names
-    //for ( var i in a ) {
-    //    var author = new Author( i ); 
-    //    _AUTHORS.push( author ); 
-    //}
-
     var data = save_my_inbox.data, 
-        authors = new Authors( data );
+        authors = new Authors( data ), 
+        posts = new Posts(); 
 
     for ( var i in data ) {
         var p = new Post( data[ i ] ); 
         var a = new Author( data[ i ].from.name ); 
-        a.addOnePost( p ); 
-        //        _ALL_POSTS.push( p )
+        a.addOnePost( p );
+        a.internalInitPostIdArray( p.id ); 
+        posts.addPost( p ); 
     }
-    authors.consolidateAuthors( _ALL_POSTS );
 
+    // need this to make turn the duplicate list into more of a hash table
+    authors.consolidateAuthors( posts.list );
     console.log( authors.list[ 0 ] ); 
-
 }
-
 init(); 
 
 // post is working
