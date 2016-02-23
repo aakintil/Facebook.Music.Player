@@ -124,8 +124,8 @@ function Post( data ) {
     this.platform = findPlatform( data );  
     this.author = data.from.name; 
     this.img = data.full_picture || ""; 
-    this.posted = data.created_time; 
-    this.likes = 0 || data.likes.data.length; 
+    this.posted = moment( data.created_time ).format('MMMM Do YYYY, h:mm:ss a'); 
+    this.likes = 0 //|| data.likes.data.length; 
 
     function findPlatform( data ) {
         // if no links are available, we can't get the platform 
@@ -232,9 +232,17 @@ Posts.prototype.setList = function( new_list ) {
     this.list = new_list; 
 }
 
+Posts.prototype.addAllToDOM = function() {
+    console.log( $( 'body' ) ); 
+}
+
+Posts.prototype.addOneToDOM = function( post ) {
+
+}
+
 
 function init() {
-    var data = save_my_inbox.data, 
+    data = save_my_inbox.data, 
         authors = new Authors( data ), 
         posts = new Posts(); 
 
@@ -251,6 +259,8 @@ function init() {
     console.log( authors.list[ 0 ] ); 
 }
 init(); 
+
+posts.addAllToDOM();
 
 // post is working
 // p = new Post( save_my_inbox.data[ 0 ] ); 
