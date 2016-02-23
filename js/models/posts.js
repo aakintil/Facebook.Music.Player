@@ -4,7 +4,6 @@
 function Post( data ) { 
     if ( !data ) return;
 
-    console.log( "initializing a post" );
     this.id = Math.random().toString( 36 ).substr( 2, 4 );
     this.name = data.name;  
     this.url = data.link || data.source; 
@@ -137,12 +136,12 @@ Posts.prototype.addAllToDOM = function( authors ) {
     for ( var i in this.list ) {
         post = this.list[ i ]
         // storing all data into appr. attributes
-        var url = post.url, 
+        var url = link = '<a target="_blank" href="' + post.url + '" class="link"> Listen & Watch </a>', 
             post_name = post.name,  
             // source = data[ i ].source; 
             img = post.img, 
             date = post.posted, 
-            user = post.author.name; 
+            user = post.author; 
 
         // create the music post container
         // the first row has to support the side nav for authors. that's it
@@ -153,24 +152,25 @@ Posts.prototype.addAllToDOM = function( authors ) {
         : $( '<div class="row">'
             + '<div class="block col-md-offset-3 col-md-6">' 
             + '</div>' 
-            + '</div>' );
+            + '</div>' ), 
+            info = $( "<div class='info'></div>" );
 
         // checking to see if any of the fields are null
-        block_row.find( '.block').append( '<p class="title">' + post_name + '</p>' ); 
-        block_row.find( '.block').append( '<p class="user">' + user + '</p>' ); 
-        block_row.find( '.block').append( '<p class="date"> Posted: ' + date + '</p>' ); 
+        info.append( '<p class="title">' + post_name + '</p>' ); 
+        info.append( '<p class="user">' + user + '</p>' ); 
+        info.append( '<p class="date"> Posted: ' + date + '</p>' ); 
         // block_row.find( '.block').append( '<p class="message">' + message + '</p>' ); 
-        block_row.find( '.block').append( url ); 
+        info.append( url ); 
         // block_row.find( '.block').append( '<p class="source">' + source + '</p>' ): do_nothing() ; 
+        block_row.find( '.block' ).append( info ); 
         block_row.find( '.block').append( '<img class="picture" src="' + img + '"/>' ); 
-
         container.append( block_row ); 
         row_num++; 
     }
     // personal count for # of users...maybe even sources? 
     //( _.size( musicData.youtube ) > 0 ) ? debug( "ya") : debug( "fuck" );
 
-    console.log( authors )
+    //    console.log( authors )
     // adding the authors 
 
     container.find( '.row:first-child' ).prepend( authors.addAllToDOM() ); 
