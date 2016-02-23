@@ -10,7 +10,7 @@ $( document ).ready( function() {
         var searchTerm = $( "#search-posts" ).val();
 
         // then a variable for the post items (to keep things clean)
-        var listItem = $( '#archive' ).find( '.row' ); 
+        var listItem = $( '#archive' ).find( '.block' ); 
 
 
         // extends the default :contains functionality to be case insensitive
@@ -39,12 +39,33 @@ $( document ).ready( function() {
 
         });
 
-        // this does the opposite -- brings items back into view
-        $( "#list li:containsi('" + searchSplit + "')" ).each( function( e ) {
+        // trying to change the class of the visible one to reflect changes
+        $( listItem ).find( ":containsi('" + searchSplit + "')" ).each( function( e )   {
 
-            //remove the hidden class (reintroduce the item to the list)
-            $( this ).removeClass( 'hidden' );
+            // add a "hidden" class that will remove the item from the list
+            $( this ).parent( '.block' ).removeClass( 'col-md-offset-3' );
+            //            console.log( $( this ).parent( '.block' ) )
 
         });
+
+
+
+        // this does the opposite -- brings items back into view
+        $( listItem ).find( ":containsi('" + searchSplit + "')" ).each( function( e ) {
+            //remove the hidden class (reintroduce the item to the list)
+            $( this ).parent( '.block' ).removeClass( 'hidden' );
+            $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
+
+        });
+
+//        // here is the meat. We are searching the list based on the search terms
+//        $( listItem ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
+//
+//            // add a "hidden" class that will remove the item from the list
+//             $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
+//
+//        });
+
+
     })
 }); 
