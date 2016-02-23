@@ -36,7 +36,7 @@
                             <form class="navbar-form" role="search">
                                 <div class="form-search search-only">
                                     <i class="search-icon glyphicon glyphicon-search"></i>
-                                    <input class="form-control search-query" type="text">
+                                    <input id="search-posts" class="form-control search-query" type="text">
                                 </div>
                             </form>
                         </div>
@@ -74,13 +74,19 @@
         </div>       
 
         <!-- External pre loaded libs -->
+        <!-- TODO --= DON'T FORGET TO CREATE LOCAL COPIES OF THESE FILES -->
         <script src="js/libs/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
 
+        <!-- javascript app structure -->
         <script src="js/models/posts.js"></script>
         <script src="js/models/authors.js"></script>
-        <script src="js/init_classes.js"></script>
-        
+        <script src="js/init.classes.js"></script>
+
+        <!-- functioning & animating the search -->
+        <script src="js/search.filter.js"></script>
+
         <!-- Boostrap + jQuery calls -->
         <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
