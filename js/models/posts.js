@@ -156,7 +156,7 @@ Posts.prototype.addAllToDOM = function( authors ) {
         //            + '</div>' 
         //            + '</div>' ), 
 
-        var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="block col-md-6"></div>' ) : $( '<div class="block col-md-offset-3 col-md-6"></div>'  ), 
+        var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="block col-md-offset-3 col-md-6"></div>' ) : $( '<div class="block col-md-offset-3 col-md-6"></div>'  ), 
             info = $( "<div class='info'></div>" );
 
         // checking to see if any of the fields are null
@@ -181,7 +181,7 @@ Posts.prototype.addAllToDOM = function( authors ) {
     // adding the authors 
 
     container.append( row ); 
-    container.find( '.row:first-child' ).prepend( authors.addAllToDOM() ); 
+    container.prepend( authors.addAllToDOM() ); 
 }
 
 Posts.prototype.addOneToDOM = function( post ) {

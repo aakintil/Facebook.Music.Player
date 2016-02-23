@@ -2428,17 +2428,21 @@ a.list-group-item {
 
 #archive {
   margin-top: 150px; }
-  #archive .container .row .block {
-    text-align: center;
-    border: 1px solid #ddd;
-    position: relative;
-    overflow: hidden;
-    padding: 0;
-    margin-bottom: 50px; }
-    #archive .container .row .block .info {
-      padding: 25px 0; }
-    #archive .container .row .block .picture {
-      width: 100%; }
+  #archive .container {
+    position: relative; }
+    #archive .container #sidebar {
+      position: absolute; }
+    #archive .container .row .block {
+      text-align: center;
+      border: 1px solid #ddd;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      margin-bottom: 50px; }
+      #archive .container .row .block .info {
+        padding: 25px 0; }
+      #archive .container .row .block .picture {
+        width: 100%; }
 
 .site-footer {
   text-align: center; }

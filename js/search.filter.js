@@ -33,38 +33,34 @@ $( document ).ready( function() {
 
         // here is the meat. We are searching the list based on the search terms
         $( listItem ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
-
             // add a "hidden" class that will remove the item from the list
             $( this ).addClass( 'hidden' );
-
         });
 
         // trying to change the class of the visible one to reflect changes
+        // any item that's part of the search should not have an offset
         $( listItem ).find( ":containsi('" + searchSplit + "')" ).each( function( e )   {
-
-            // add a "hidden" class that will remove the item from the list
-            $( this ).parent( '.block' ).removeClass( 'col-md-offset-3' );
-            //            console.log( $( this ).parent( '.block' ) )
 
         });
 
-
+        //////////////////////
 
         // this does the opposite -- brings items back into view
         $( listItem ).find( ":containsi('" + searchSplit + "')" ).each( function( e ) {
             //remove the hidden class (reintroduce the item to the list)
-            $( this ).parent( '.block' ).removeClass( 'hidden' );
-            $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
-
+            $( this ).parent( '.block' )
+                .removeClass( 'hidden' ); 
         });
 
-//        // here is the meat. We are searching the list based on the search terms
-//        $( listItem ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
-//
-//            // add a "hidden" class that will remove the item from the list
-//             $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
-//
-//        });
+
+
+        //        // here is the meat. We are searching the list based on the search terms
+        //        $( listItem ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
+        //
+        //            // add a "hidden" class that will remove the item from the list
+        //             $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
+        //
+        //        });
 
 
     })

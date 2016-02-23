@@ -62,9 +62,12 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
     margin-top: 150px; 
 
     .container {
-
+        position: relative; 
         // individual music info containers
         // adjusting row margin so i can center block
+        #sidebar {
+            position: absolute; 
+        }
         .row {
 
             // margin: 50px -15px; 
@@ -76,7 +79,7 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
                 overflow: hidden;
                 padding: 0;
                 margin-bottom: 50px; 
-                
+
                 .info {
                     padding: 25px 0;
                 }

@@ -79,8 +79,8 @@ Authors.prototype.each = function() {
 }
 
 Authors.prototype.addAllToDOM = function() {
-    var author_block = $( '<div class="col-md-3"></div>' ), 
-        _author = $( "<div></div>" ); 
+    var author_block = $( '<div id="sidebar" class="row"></div>' ), 
+        _author = $( "<div class='col-md-12'></div>" ); 
 
     for ( var i in this.list ) {
         var author = this.list[ i ], 
