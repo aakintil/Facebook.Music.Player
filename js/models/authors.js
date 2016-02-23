@@ -95,6 +95,26 @@ Authors.prototype.addAllToDOM = function() {
     return author_block; 
 }
 
+
+Authors.prototype.__addAllToDOM = function() {
+    var author_block = $( '<div id="sidebar" class="row"><div class="col-md-3"></div></div>' ), 
+        _author = $( "<div></div>" ); 
+
+    for ( var i in this.list ) {
+        var author = this.list[ i ], 
+            name = author.name, 
+            post_count = author.posts.length, 
+            obj = $( '<p> <span class="author">' + name + '</span> <span class="postsNum">' + post_count + '</span> </p>' ); 
+        _author.append( obj ); 
+    }
+
+    // adding to the DOM 
+    author_block.find( 'div' ).append( _author ); 
+    return author_block; 
+}
+
+
+
 function minusZeroes( temp ) {
     var minus_zeroes = []; 
     for ( var i in temp ) {

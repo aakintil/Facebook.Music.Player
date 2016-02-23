@@ -132,7 +132,9 @@ Posts.prototype.addAllToDOM = function( authors ) {
     // grab the container
     var container = $( '#archive .main.container' ), 
         post = "", 
-        row_num = 0; 
+        row_num = 0, 
+        row = $( '<div class="row"></div>' ); 
+    
     for ( var i in this.list ) {
         post = this.list[ i ]
         // storing all data into appr. attributes
@@ -145,14 +147,16 @@ Posts.prototype.addAllToDOM = function( authors ) {
 
         // create the music post container
         // the first row has to support the side nav for authors. that's it
-        var block_row = ( row_num === 0 ) ? $( '<div class="row">'
-                                              + '<div class="block col-md-6">' 
-                                              + '</div>' 
-                                              + '</div>' ) 
-        : $( '<div class="row">'
-            + '<div class="block col-md-offset-3 col-md-6">' 
-            + '</div>' 
-            + '</div>' ), 
+        //        var block_row = ( row_num === 0 ) ? $( '<div class="row">'
+        //                                              + '<div class="block col-md-6">' 
+        //                                              + '</div>' 
+        //                                              + '</div>' ) 
+        //        : $( '<div class="row">'
+        //            + '<div class="block col-md-offset-3 col-md-6">' 
+        //            + '</div>' 
+        //            + '</div>' ), 
+
+        var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="block col-md-6"></div>' ) : $( '<div class="block col-md-offset-3 col-md-6"></div>'  ), 
             info = $( "<div class='info'></div>" );
 
         // checking to see if any of the fields are null
@@ -162,9 +166,12 @@ Posts.prototype.addAllToDOM = function( authors ) {
         // block_row.find( '.block').append( '<p class="message">' + message + '</p>' ); 
         info.append( url ); 
         // block_row.find( '.block').append( '<p class="source">' + source + '</p>' ): do_nothing() ; 
-        block_row.find( '.block' ).append( info ); 
-        block_row.find( '.block').append( '<img class="picture" src="' + img + '"/>' ); 
-        container.append( block_row ); 
+
+        block_row.append( info ); 
+        block_row.append( '<img class="picture" src="' + img + '"/>' ); 
+        //        block_row.find( '.block' ).append( info ); 
+        //        block_row.find( '.block').append( '<img class="picture" src="' + img + '"/>' ); 
+        row.append( block_row ); 
         row_num++; 
     }
     // personal count for # of users...maybe even sources? 
@@ -173,6 +180,7 @@ Posts.prototype.addAllToDOM = function( authors ) {
     //    console.log( authors )
     // adding the authors 
 
+    container.append( row ); 
     container.find( '.row:first-child' ).prepend( authors.addAllToDOM() ); 
 }
 
