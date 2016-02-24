@@ -39,7 +39,7 @@ $( document ).ready( function() {
             // slide up instead
             $( this ).addClass( 'hiding' )
                 .removeClass('showing')
-                .slideUp({ duration: 1000, easing: "easeInOutQuart" }); 
+                .slideUp({ duration: 900, easing: "easeInOutCirc" }); 
         });
 
         // this does the opposite -- brings items back into view
@@ -49,7 +49,7 @@ $( document ).ready( function() {
             $( this ).parent( '.block')
                 .removeClass( 'hiding' )
                 .addClass( 'showing' )
-                .slideDown({ duration: 1000, easing: "easeInOutQuart" }); 
+                .slideDown({ duration: 950, easing: "easeInOutCirc" }); 
         });
     })
 }); 
