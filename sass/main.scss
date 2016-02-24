@@ -72,18 +72,6 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
             position: absolute; 
         }
         .row {
-
-            .blah {
-                -webkit-transition: height 1s; 
-                -moz-transition: height 1s; 
-                -ms-transition: height 1s; 
-                -o-transition: height 1s; 
-
-//                transition: height 1s;
-//                opacity: 0; 
-//                height: 0 !important;
-                top: -10000px; 
-            }
             // margin: 50px -15px; 
 
             .block {
@@ -93,10 +81,30 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
                 overflow: hidden;
                 padding: 0;
                 margin-bottom: 50px; 
-                height: 700px; 
-                
+                height: 580px; 
+
                 .info {
-                    padding: 25px 0;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 100%;
+                    text-align: left;
+                    padding: 50px;
+                    padding-top: 200px;
+                    opacity: 0;
+
+                    transition: opacity .25s ease-in-out;
+                    -moz-transition: opacity .25s ease-in-out;
+                    -webkit-transition: opacity .25s ease-in-out;
+                }
+
+                .info:hover {
+                    opacity: 1;
+                    
+                    transition: opacity .25s ease-in-out;
+                    -moz-transition: opacity .25s ease-in-out;
+                    -webkit-transition: opacity .25s ease-in-out;
                 }
 
                 .picture {

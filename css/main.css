@@ -2809,12 +2809,6 @@ body {
     position: relative; }
     #archive .container #sidebar {
       position: absolute; }
-    #archive .container .row .blah {
-      -webkit-transition: height 1s;
-      -moz-transition: height 1s;
-      -ms-transition: height 1s;
-      -o-transition: height 1s;
-      top: -10000px; }
     #archive .container .row .block {
       text-align: center;
       border: 1px solid #ddd;
@@ -2822,9 +2816,25 @@ body {
       overflow: hidden;
       padding: 0;
       margin-bottom: 50px;
-      height: 700px; }
+      height: 580px; }
       #archive .container .row .block .info {
-        padding: 25px 0; }
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        padding: 50px;
+        padding-top: 200px;
+        opacity: 0;
+        transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out; }
+      #archive .container .row .block .info:hover {
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out; }
       #archive .container .row .block .picture {
         width: 100%; }
 
