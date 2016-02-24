@@ -4,9 +4,9 @@ $( document ).ready( function() {
     var colors = [ "BF55EC", "D91E18", "00B16A", "E87E04", "19B5FE" ], 
         randColor = ""; 
     
+    // TODO come back and fix! 
     $( '.block' ).on( "mouseenter", function() {
         randColor = "#" + colors[ Math.floor( Math.random() * colors.length ) ];
-        console.log( randColor ); 
         $( this ).find( '.info' ).css({ "background-color" : randColor }); 
     })
 })
