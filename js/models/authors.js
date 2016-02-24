@@ -19,24 +19,6 @@ Authors.prototype.getAuthors = function() {
 
 Authors.prototype.addOneAuthor = function( author ) {
     this.list.push( author );
-    //not working properly for some weird reason
-    // if it's empty just add it
-    //    if ( this.list.length < 1 ) {
-    //        this.list.push( author ); 
-    //        return; 
-    //    }
-    //
-    //    console.log( "adding author ", author.name)
-    //    // otherwise, if it's not a duplicate, add it
-    //    for ( var i in this.list ) {
-    //        var index_name = this.list[ i ].name, 
-    //            author_name = author.name; 
-    //
-    //        if ( author !== this.list[ i ] ) {
-    //            this.list.push( author );
-    //        } 
-    //        //        console.log( "successfully added author" ); 
-    //    }
 }
 
 Authors.prototype.clearAuthors = function() {

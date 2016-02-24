@@ -128,13 +128,17 @@ Posts.prototype.setList = function( new_list ) {
     this.list = new_list; 
 }
 
+Posts.prototype.addOneToDOM = function( post ) {
+
+}
+
 Posts.prototype.addAllToDOM = function( authors ) {
     // grab the container
     var container = $( '#archive .main.container' ), 
         post = "", 
         row_num = 0, 
         row = $( '<div class="row"></div>' ); 
-    
+
     for ( var i in this.list ) {
         post = this.list[ i ]
         // storing all data into appr. attributes
@@ -156,7 +160,7 @@ Posts.prototype.addAllToDOM = function( authors ) {
         //            + '</div>' 
         //            + '</div>' ), 
 
-        var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="block col-md-offset-3 col-md-6"></div>' ) : $( '<div class="block col-md-offset-3 col-md-6"></div>'  ), 
+        var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="animated block col-md-offset-3 col-md-6"></div>' ) : $( '<div class="animated block col-md-offset-3 col-md-6"></div>'  ), 
             info = $( "<div class='info'></div>" );
 
         // checking to see if any of the fields are null
@@ -177,13 +181,10 @@ Posts.prototype.addAllToDOM = function( authors ) {
     // personal count for # of users...maybe even sources? 
     //( _.size( musicData.youtube ) > 0 ) ? debug( "ya") : debug( "fuck" );
 
-    //    console.log( authors )
-    // adding the authors 
-
+    // adding the posts to the container 
     container.append( row ); 
-    container.prepend( authors.addAllToDOM() ); 
+    // add when everything is working
+    //    container.prepend( authors.addAllToDOM() ); 
 }
 
-Posts.prototype.addOneToDOM = function( post ) {
 
-}

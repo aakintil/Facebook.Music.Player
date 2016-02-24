@@ -37,8 +37,8 @@ $( document ).ready( function() {
         $( posts ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
             // hard to animate display:none...so we use jquery
             // slide up instead
-            $( this ).addClass( 'hiding' )
-                .removeClass('showing')
+            $( this ).removeClass('fadeIn')
+                .addClass( 'fadeOutUp' )
                 .slideUp({ duration: 900, easing: "easeInOutCirc" }); 
         });
 
@@ -47,8 +47,8 @@ $( document ).ready( function() {
             // remove the hiding class just for information sake
             // slide back down all the visible ones
             $( this ).parent( '.block')
-                .removeClass( 'hiding' )
-                .addClass( 'showing' )
+                .removeClass( 'fadeOutUp' )
+                .addClass( 'fadeIn' )
                 .slideDown({ duration: 950, easing: "easeInOutCirc" }); 
         });
     })
