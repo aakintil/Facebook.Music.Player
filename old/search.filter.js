@@ -1,6 +1,5 @@
 // SOURCE:
 // http://www.robsawyer.me/blog/2013/07/10/lightweight-jquery-searchfilter-tutorial/
-// TODO: add NO RESULTS + # of results clause to the UI
 
 $( document ).ready( function() {
 
@@ -14,7 +13,6 @@ $( document ).ready( function() {
         var posts = $( '#archive' ).find( '.block' ); 
 
 
-        // TODO, understand this
         // extends the default :contains functionality to be case insensitive
         // if you want case sensitive search, just remove this next chunk
         $.extend( $.expr[':'], {
@@ -35,21 +33,35 @@ $( document ).ready( function() {
 
         // here is the meat. We are searching the list based on the search terms
         $( posts ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
-            // hard to animate display:none...so we use jquery
-            // slide up instead
-            $( this ).addClass( 'hiding' )
-                .removeClass('showing')
-                .slideUp({ duration: 1000, easing: "easeInOutQuart" }); 
+            // add a "hidden" class that will remove the item from the list
+            $( this ).addClass( 'hidden' );
         });
+
+        // trying to change the class of the visible one to reflect changes
+        // any item that's part of the search should not have an offset
+        $( posts ).find( ":containsi('" + searchSplit + "')" ).each( function( e )   {
+
+        });
+
+        //////////////////////
 
         // this does the opposite -- brings items back into view
         $( posts ).find( ":containsi('" + searchSplit + "')" ).each( function( e ) {
-            // remove the hiding class just for information sake
-            // slide back down all the visible ones
-            $( this ).parent( '.block')
-                .removeClass( 'hiding' )
-                .addClass( 'showing' )
-                .slideDown({ duration: 1000, easing: "easeInOutQuart" }); 
+            //remove the hidden class (reintroduce the item to the list)
+            $( this ).parent( '.block' )
+                .removeClass( 'hidden' ); 
         });
+
+
+
+        //        // here is the meat. We are searching the list based on the search terms
+        //        $( listItem ).not( ":containsi('" + searchSplit + "')" ).each( function( e )   {
+        //
+        //            // add a "hidden" class that will remove the item from the list
+        //             $( this ).parent( '.block' ).not( "#top-post" ).addClass( 'col-md-offset-3' );
+        //
+        //        });
+
+
     })
 }); 

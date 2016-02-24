@@ -3,9 +3,12 @@
 @import 
 
     // Complete bootflat assets
-    "bootflat"; 
+    "bootflat", 
+    "animate"; 
 
-// dimension variables
+// FADING ANIMATION VARIABLES
+
+// DIMENSION VARIABLES 
 $desktop_w: 70%; // TODO: don't forget to add media query to change this
 
 // NAVBAR
@@ -70,6 +73,17 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
         }
         .row {
 
+            .blah {
+                -webkit-transition: height 1s; 
+                -moz-transition: height 1s; 
+                -ms-transition: height 1s; 
+                -o-transition: height 1s; 
+
+//                transition: height 1s;
+//                opacity: 0; 
+//                height: 0 !important;
+                top: -10000px; 
+            }
             // margin: 50px -15px; 
 
             .block {
@@ -79,7 +93,8 @@ $desktop_w: 70%; // TODO: don't forget to add media query to change this
                 overflow: hidden;
                 padding: 0;
                 margin-bottom: 50px; 
-
+                height: 700px; 
+                
                 .info {
                     padding: 25px 0;
                 }
