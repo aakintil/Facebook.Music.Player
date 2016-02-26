@@ -6,7 +6,7 @@ $( document ).ready( function() {
 
     // TODO come back and fix! 
     $( '.block' ).on( "mouseenter", function() {
-        randColor = rgbValues[ Math.floor( Math.random() * colors.length ) ];
+        randColor = rgbValues[ Math.floor( Math.random() * rgbValues.length ) ];
         $( this ).find( '.info' ).css({ "background-color" : randColor }); 
     })
 })
