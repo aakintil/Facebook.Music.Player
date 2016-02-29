@@ -22,6 +22,6 @@ init();
 
 console.log( posts.getSize() )
 posts.authors = authors.list; 
- authors.each(); 
+// authors.each(); 
 // posts.addAllToDOM( authors );
-posts.addToDOM( authors, "soundcloud.com", 20 ); 
+// posts.addToDOM( authors, "soundcloud.com", 20 ); 

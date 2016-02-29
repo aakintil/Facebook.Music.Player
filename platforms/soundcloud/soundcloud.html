@@ -6,13 +6,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
+
+        <script src="../../js/superior.music.group.js"></script>
+        <script src="../../js/funktion.js"></script>
+        <script src="../../js/save.mah.inbox.js"></script>
+        <script src="../../js/index.js"></script>
+
         <script>
             var clientSecret = "f6cf8d36cbafd4f94bf0b2c5134ca3a2"; 
-            SC.initialize({
-                client_id: '5882f6425263623d4e9ec15bf3de1c9a', 
-                redirect_uri: "http://localhost:8000/soundcloud.html"
-            });
-
             // stream track id 293
             //            SC.stream( '/tracks/293' ).then( function( player ) {
             //                player.play();
@@ -30,16 +31,44 @@
 
             // stream track id 293
         </script>
+
+        <style>
+            #content iframe {
+                width: 618px; 
+                height: 164px;
+            }
+
+        </style>
     </head>
     <body>
+        <button> play </button>
+        <button> next </button>
         <div id="content"></div>
 
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="../../js/libs/moment.min.js"></script>
+
+        <!-- javascript app structure -->
+        <script src="../../js/models/posts.js"></script>
+        <script src="../../js/models/authors.js"></script>
+        <script src="../../js/init.classes.js"></script>
+        <script src="js/player.js"></script>
+
         <script>
-            var track_url = 'https://soundcloud.com/rlgrime/sets/high-beams-ep';
-            SC.oEmbed( track_url, { auto_play: true }).then( function( oEmbed ) {
-                console.log('oEmbed response: ', oEmbed);
-                $( "#content" ).append( oEmbed.html )
-            });
+
+//            console.log( widget1 )
+
+//            SC.stream('/tracks/' + id, {
+//                useHTML5Audio: true,
+//                debugMode: true
+//            }, function(sound) {
+//
+//                $('.character').on('click', function () {
+//                    sound.play();
+//                });
+//            });
         </script>
     </body>
 
