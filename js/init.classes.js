@@ -1,8 +1,9 @@
-var data = save_my_inbox.data, 
+var data = a, // save_mah_inbox.data
     authors = new Authors( data ),
     posts = new Posts(); 
 
 function init() {
+    console.log( data.length )
     var post = "", 
         author = ""; 
 
@@ -14,12 +15,13 @@ function init() {
         author.internalInitPostIdArray( post.id ); 
         posts.addPost( post ); 
     }
-
     // need this to make turn the duplicate list into more of a hash table
     authors.consolidateAuthors( posts.list );
 }
 init(); 
 
+console.log( posts.getSize() )
 posts.authors = authors.list; 
-//authors.each(); 
-posts.addAllToDOM( authors );
+ authors.each(); 
+// posts.addAllToDOM( authors );
+posts.addToDOM( authors, "soundcloud.com", 20 ); 

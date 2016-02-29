@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+        <script>
+            var clientSecret = "f6cf8d36cbafd4f94bf0b2c5134ca3a2"; 
+            SC.initialize({
+                client_id: '5882f6425263623d4e9ec15bf3de1c9a', 
+                redirect_uri: "http://localhost:8000/soundcloud.html"
+            });
+
+            // stream track id 293
+            //            SC.stream( '/tracks/293' ).then( function( player ) {
+            //                player.play();
+            //            });
+            //            SC.get('/user/183/tracks').then(function(tracks){
+            //                console.log( 'Latest track: ' + tracks[0].title );
+            //            });
+
+            // initiate auth popup
+            //            SC.connect().then( function() {
+            //                return SC.get( '/me' );
+            //            }).then( function( me ) {
+            //                alert( 'Hello, ' + me.username );
+            //            });
+
+            // stream track id 293
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+
+        <script>
+            var track_url = 'https://soundcloud.com/rlgrime/sets/high-beams-ep';
+            SC.oEmbed( track_url, { auto_play: true }).then( function( oEmbed ) {
+                console.log('oEmbed response: ', oEmbed);
+                $( "#content" ).append( oEmbed.html )
+            });
+        </script>
+    </body>
+
+</html>

@@ -15,6 +15,34 @@
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+
+        <script>
+            function appendResults( text ) {
+                var results = document.getElementById('results');
+                results.appendChild( document.createElement('P') );
+                results.appendChild( document.createTextNode(text) );
+                console.log( "called")
+            }
+
+            function makeRequest() {
+                var request = gapi.client.urlshortener.url.get( {
+                    'shortUrl': 'http://goo.gl/fbsS'
+                });
+                request.then( function( response ) {
+                    appendResults( response.result.longUrl );
+                }, function( reason ) {
+                    console.log( 'Error: ' + reason.result.error.message );
+                });
+            }
+
+            function init() {
+                gapi.client.setApiKey( 'AIzaSyAwgsryzjBAXrF3ygm-d-_URblVXeUi5w0' );
+                gapi.client.load( 'urlshortener', 'v1' ).then( makeRequest );
+            }
+        </script>
+
+        <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
     </head>
 
     <body>
@@ -49,6 +77,8 @@
                 </div>
             </nav>
         </div>
+
+        <div id="results"></div>
 
         <!-- ADD A SIDEPANEL THAT SHOWS THE NUMBER OF POSTS OF EACH USER -->
         <div id="archive">

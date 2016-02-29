@@ -7,11 +7,11 @@ function Post( data ) {
     this.id = Math.random().toString( 36 ).substr( 2, 4 );
     this.name = data.name;  
     this.url = data.link || data.source; 
-    this.platform = findPlatform( data );  
+    this.platform = data.caption; // findPlatform( data );  
     this.author = data.from.name; // or the actual object
-    this.img = data.full_picture || 'img/no.pic.png'; 
+    this.img = data.picture || 'img/no.pic.png'; 
     this.posted = moment( data.created_time ).format('MMMM Do YYYY, h:mm:ss a'); 
-    this.likes = 0 //|| data.likes.data.length; 
+    this.likes = ( data.likes ) ? data.likes.data.length : 0; 
 
     function findPlatform( data ) {
         // if no links are available, we can't get the platform 
@@ -100,8 +100,13 @@ Posts.prototype.calculateAuthorCount = function() {
 }
 
 Posts.prototype.addPost = function( post ) {
-    if ( hasLink( post ))
+
+
+    if ( hasLink( post )) {
+        this.size = this.list.length;   
         this.list.push( post ); 
+    }
+
 }
 
 function hasLink( post ) {
@@ -131,6 +136,49 @@ Posts.prototype.setList = function( new_list ) {
 Posts.prototype.addOneToDOM = function( post ) {
 
 }
+
+Posts.prototype.addToDOM = function( authors, platform, count ) {
+    var container = $( '#archive .main.container' ), 
+        post = "", 
+        row_num = 0, 
+        row = $( '<div class="row"></div>' ), 
+        c = 0; 
+
+    for ( var i in this.list ) {
+
+        if ( c < count ) {
+            if ( this.list[ i ].platform === platform ) {
+                post = this.list[ i ]
+                // storing all data into appr. attributes
+                var url = link = '<a target="_blank" href="' + post.url + '" class="link"> Listen & Watch </a>', 
+                    post_name = post.name,  
+                    // source = data[ i ].source; 
+                    img = post.img, 
+                    date = post.posted, 
+                    user = post.author; 
+
+                var block_row = ( row_num === 0 ) ? $( '<div id="top-post" class="animated block col-md-offset-3 col-md-6"></div>' ) : $( '<div class="animated block col-md-offset-3 col-md-6"></div>'  ), 
+                    info = $( "<div class='info'></div>" );
+
+                // checking to see if any of the fields are null
+                info.append( '<p class="title">' + post_name + '</p>' ); 
+                info.append( '<p class="user">' + user + '</p>' ); 
+                info.append( '<p class="date"> Posted: ' + date + '</p>' ); 
+                info.append( url ); 
+                block_row.append( info ); 
+                block_row.append( '<img class="picture" src="' + img + '"/>' ); 
+                row.append( block_row ); 
+                row_num++; 
+                c++; 
+            }
+        }
+        // end of ( c < count )
+    }
+
+    // adding the posts to the container 
+    container.append( row ); 
+}
+
 
 Posts.prototype.addAllToDOM = function( authors ) {
     // grab the container
