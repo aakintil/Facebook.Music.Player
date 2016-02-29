@@ -42,6 +42,9 @@ SCPlayer.prototype._play = function( url ) {
 
 
     //    if ( this.isPaused ) {
+    console.log( "==== DOES IT HAVE ITS OWN LOCAL LIST>? ====" ); 
+    console.log( this.self ); 
+    console.log( "===================================" );
 
     if ( url !== undefined ) {
         console.log( "we are moving to new stream")
@@ -63,18 +66,18 @@ SCPlayer.prototype._play = function( url ) {
 
 SCPlayer.prototype._pause = function() {
 
-    if ( this.isPlaying ) {
-        this.self.pause();
+    //    if ( this.isPlaying ) {
+    this.self.pause();
 
-        this.isPaused = true; 
-        this.isPlaying = false; 
-        console.log( "...paused...")
-    }
+    this.isPaused = true; 
+    this.isPlaying = false; 
+    console.log( "...paused...")
+    //    }
 }
 
 SCPlayer.prototype._next = function() {
 
-    this.self.stop(); 
+    this.self.pause(); 
     console.log( "current ", this.currentTrack.obj.url )
     console.log( "next ", this.nextTrack.obj.url ); 
     //
