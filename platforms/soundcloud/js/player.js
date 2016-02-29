@@ -31,18 +31,14 @@ SCPlayer.prototype.init = function() {
     this.self.resolve( this.currentTrack.obj.url, function ( track, err ) {
         // do smth with track object
         // e.g. display data in a view etc.
-        console.log( "track...  ", track ); 
-
-        console.log( "error...  ", err ); 
-
-        // once track is loaded it can be played
-
-        // stop playing track and keep silence
-        //    scPlayer.pause();
+        console.log( "initializing the app " ); 
+        console.log( "track tag...  ", track.tag_list ); 
+        console.log( "track title...  ", track.title ); 
+        showOnDOM( track.tag_list ); 
     });
 }
 
-SCPlayer.prototype.playy = function( url ) {
+SCPlayer.prototype._play = function( url ) {
 
 
     //    if ( this.isPaused ) {
@@ -53,7 +49,7 @@ SCPlayer.prototype.playy = function( url ) {
         this.self.play({ streamUrl: url });
 
         this.self.on( 'play', function( audio ) {
-            console.log( audio )
+            console.log( audio.path[0].attributes[0].nodeValue )
         })
     } else {
         this.self.play()
@@ -65,7 +61,7 @@ SCPlayer.prototype.playy = function( url ) {
     //    }
 }
 
-SCPlayer.prototype.pause = function() {
+SCPlayer.prototype._pause = function() {
 
     if ( this.isPlaying ) {
         this.self.pause();
@@ -76,7 +72,7 @@ SCPlayer.prototype.pause = function() {
     }
 }
 
-SCPlayer.prototype.next = function() {
+SCPlayer.prototype._next = function() {
 
     this.self.stop(); 
     console.log( "current ", this.currentTrack.obj.url )
@@ -88,30 +84,21 @@ SCPlayer.prototype.next = function() {
     this.self.resolve( this.nextTrack.obj.url , function ( track, err ) {
         // do smth with track object
         // e.g. display data in a view etc.
-        console.log( "track...  ", track ); 
-        console.log( "error...  ", err ); 
-
-        //        setTimeout( function() {
-        //            self.play( track.uri );
-        //        }, 3000 ); 
-
-        storeURI( track.uri ); 
+        console.log( "==== MOVING ONTO THE NEXT SONG ====" ); 
+        console.log( "track tag...  ", track.tag_list ); 
+        console.log( "track title...  ", track.title ); 
+        console.log( "===================================" ); 
+        showOnDOM( track.tag_list ); 
         //        console.log( self )
         // once track is loaded it can be played
-        setTimeout( function() {
-            self.playy( track.stream_url );
-        }, 2000 )
+        self._play( track.stream_url );
     });
+
 
     this.currentTrack = this.nextTrack; 
     this.nextTrack.obj = this.tracks[ this.currentTrack.index++ ]
     this.nextTrack.index = this.currentTrack.index++; 
 
-}
-
-function storeURI( data ) {
-    console.log( "storing...", data ); 
-    trackURI = data; 
 }
 // testing the soundcloud player
 
@@ -132,4 +119,10 @@ Posts.prototype._getSongsFromPlatform = function( platform, limit ) {
 
 s = new SCPlayer( posts._getSongsFromPlatform( "soundcloud.com", 20 ) ); 
 s.init(); 
-console.log( s.currentTrack )
+//console.log( s.currentTrack )
+
+function showOnDOM( info ) {
+    var el = "<p class='active'>" + info + "</p>"; 
+    $( "#content" ).find( 'p' ).removeClass( "active" ); 
+    $( "#content" ).append( el ); 
+}
