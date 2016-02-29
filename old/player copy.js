@@ -22,26 +22,19 @@ function SCPlayer( tracks ) {
 }
 
 SCPlayer.prototype.init = function() {
-    // putting the current track @ 0 index fucks up the play pause cuz of "bad" urls
     this.currentTrack.obj = this.tracks[ 0 ]; 
-    this.currentTrack.index = 10; 
+    this.currentTrack.index = 0; 
     this.nextTrack.obj = this.tracks[ 1 ]; 
-    this.nextTrack.index = 11; 
+    this.nextTrack.index = 1; 
 
-
-    var self = this; 
     // OR in other cases you need to load TRACK and resolve it's data
-    console.log( this.currentTrack.obj.url)
     this.self.resolve( this.currentTrack.obj.url, function ( track, err ) {
         // do smth with track object
         // e.g. display data in a view etc.
         console.log( "initializing the app " ); 
         console.log( "track tag...  ", track.tag_list ); 
         console.log( "track title...  ", track.title ); 
-        showOnDOM( track.tag_list );
-
-        // testing to see if this will affect the general pause / play of the song
-        self._play( track.stream_url ); 
+        showOnDOM( track.tag_list ); 
     });
 }
 
@@ -49,22 +42,24 @@ SCPlayer.prototype._play = function( url ) {
 
 
     //    if ( this.isPaused ) {
-    //    console.log( "==== DOES IT HAVE ITS OWN LOCAL LIST>? ====" ); 
-    //    console.log( this.self ); 
-    //    console.log( "===================================" );
+    console.log( "==== DOES IT HAVE ITS OWN LOCAL LIST>? ====" ); 
+    console.log( this.self ); 
+    console.log( "===================================" );
 
     if ( url !== undefined ) {
         console.log( "we are moving to new stream")
+        this.self.preload( url ); 
         this.self.play({ streamUrl: url });
+
         this.self.on( 'play', function( audio ) {
-            //            console.log( audio.path[0].attributes[0].nodeValue )
+            console.log( audio.path[0].attributes[0].nodeValue )
         })
     } else {
         this.self.play()
     }
 
-    //    this.isPaused = false; 
-    //    this.isPlaying = true; 
+    this.isPaused = false; 
+    this.isPlaying = true; 
     console.log( "playing...")
     //    }
 }
@@ -82,12 +77,16 @@ SCPlayer.prototype._pause = function() {
 
 SCPlayer.prototype._next = function() {
 
-    this.self.stop(); 
+    this.self.pause(); 
+    console.log( "current ", this.currentTrack.obj.url )
+    console.log( "next ", this.nextTrack.obj.url ); 
+    //
+    //    this.self.play( this.nextTrack.obj.url ); 
     var self = this; 
+    uri = ""; 
     this.self.resolve( this.nextTrack.obj.url , function ( track, err ) {
         // do smth with track object
         // e.g. display data in a view etc.
-        if ( err ) console.log( "something happened, ", err )
         console.log( "==== MOVING ONTO THE NEXT SONG ====" ); 
         console.log( "track tag...  ", track.tag_list ); 
         console.log( "track title...  ", track.title ); 
